@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 # Application definition
 
@@ -134,5 +136,4 @@ LOGOUT_URL = 'logout'
 # EMAIL_HOST_USER = 'ceasar'
 # EMAIL_HOST_PASSWORD = 'edem1234'
 # EMAIL_USE_TLS = True
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
