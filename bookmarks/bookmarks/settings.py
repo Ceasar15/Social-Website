@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #third parties
     'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -146,4 +147,10 @@ LOGOUT_URL = 'logout'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    # Facebook 
+    # Twitter
+    'social_core.backends.google.GoogleOAuth2',
 ]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '617196388279-2u8v5kklc7iavh8sol8tts2710go99qq.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Cz46FHBfuTQlPJnabSGrz6nb'
