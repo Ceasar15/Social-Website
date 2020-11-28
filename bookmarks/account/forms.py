@@ -12,4 +12,10 @@ class UserRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields  = ('username', 'first_name', )
+        fields  = ('username', 'first_name', 'email')
+
+    def clean_password2(self):
+        if self.cleaned_data['password'] != self.cleaned_data['password2']:
+            raise forms.ValidationError('Passwords don\'t match')
+        return self.cleaned_data['password2']       
+        

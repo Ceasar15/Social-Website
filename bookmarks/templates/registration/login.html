@@ -7,7 +7,7 @@
             Your username and password did not match
         </p>
     {% else %}
-        <p>Charley, Log-In for this side give me.</p>
+        <p>Charley, Log-In for this side give me. If you no get account, then <a href="{% url 'register' %}">register</a> for this side</p>
     {% endif %}
     <div>
         <form action="{% url 'login' %}" method="POST">
