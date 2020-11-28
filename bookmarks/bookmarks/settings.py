@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #third parties
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -143,5 +145,5 @@ LOGOUT_URL = 'logout'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'account.Authentication.EmailAuthBackend',
+    'account.authentication.EmailAuthBackend',
 ]
