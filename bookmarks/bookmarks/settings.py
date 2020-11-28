@@ -141,3 +141,7 @@ LOGOUT_URL = 'logout'
 # EMAIL_HOST_PASSWORD = 'edem1234'
 # EMAIL_USE_TLS = True
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.Authentication.EmailAuthBackend',
+]
