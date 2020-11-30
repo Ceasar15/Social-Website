@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.utils.text import slugify
+from django.urls import reverse
+
 
 # Create your models here.
 class Image(models.Model):
@@ -8,7 +10,7 @@ class Image(models.Model):
     title       = models.CharField(max_length=200)
     slug        = models.SlugField(max_length=200, blank=True)
     url         = models.URLField()
-    images      = models.ImageField(upload_to='images/%Y/%m/%d/')
+    image      = models.ImageField(upload_to='images/%Y/%m/%d/')
     description = models.TextField(blank=True)
     created     = models.DateField(auto_now_add=True, db_index=True)
     users_liked = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='images_liked', blank=True)
@@ -22,3 +24,5 @@ class Image(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('images:detail', args=[self.id, self.slug])
