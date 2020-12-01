@@ -39,12 +39,3 @@ def image_detail(request, id, slug):
         'images/image/detail.html',
         {'section': 'images',
         'image': image})
-
-
-
-
-
-
-
-
-
