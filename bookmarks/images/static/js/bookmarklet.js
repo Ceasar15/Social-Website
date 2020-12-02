@@ -73,7 +73,7 @@
             // Too much attempts to load, send error
             alert('An error occurred while loading jQuery')
           }
-        } else {
+        } else {  
             bookmarklet();
         }
       })();
