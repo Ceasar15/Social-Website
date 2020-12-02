@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block title %}{{ image.title }}{% endblock %}
+
 {% block content %}
             <h1>{{ image.title }}</h1>
             {% load thumbnail %}
                 <a href="{{ image.image.url }}">
                     <img src="{% thumbnail image.image 300x0 %}" class="image-detail"/>
                 </a>
-            {% with total_likes=image.users_liked.count 
-                users_liked=image.users_liked.all %}
+            {% with total_likes=image.users_liked.count users_liked=image.users_liked.all %}
                 <div class="image-info">
                     <div>
                         <span class="count">
@@ -37,6 +37,7 @@
                     {% endfor %}
                 </div>
             {% endwith %}
+{% endblock %}
 
             {% block domready %}
                 $('a.like').click(function(e){
@@ -65,5 +66,4 @@
                             }
                             );
                         });
-                {% endblock %}
-{% endblock %}
+                {% endblock domready %}
