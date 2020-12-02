@@ -2,25 +2,28 @@
 {% block title %}{{ image.title }}{% endblock %}
 {% block content %}
     <h1>{{ image.title }}</h1>
-        <img src="{{ image.image.url }}" class="image-detail">
-        {% with total_likes=image.users_liked.count %}
-            <div class="image-info">
-                <div>
-                    <span class="count">
-                        {{ total_likes }} like{{ total_likes|pluralize }}
-                    </span>
-                </div>
-                {{ image.description|linebreaks }}
-            </div>
-            <div class="image-likes">
-                {% for user in image.users_like.all %}
+        {% load thumbnail %}
+        <a href="{{ image.image.url }}">
+            <img src="{% thumbnail image.image 300x0 %}" class="image-detail"/>
+        </a>
+            {% with total_likes=image.users_liked.count %}
+                <div class="image-info">
                     <div>
-                        <img src="{{ user.profile.photo.url }}">
-                        <p>{{ user.first_name }}</p>
+                        <span class="count">
+                            {{ total_likes }} like{{ total_likes|pluralize }}
+                        </span>
                     </div>
-                {% empty %}
-                    Nobody likes this image yet.
-                {% endfor %}
-            </div>
-        {% endwith %}
+                    {{ image.description|linebreaks }}
+                </div>
+                <div class="image-likes">
+                    {% for user in image.users_like.all %}
+                        <div>
+                            <img src="{{ user.profile.photo.url }}">
+                            <p>{{ user.first_name }}</p>
+                        </div>
+                    {% empty %}
+                        Nobody likes this image yet.
+                    {% endfor %}
+                </div>
+            {% endwith %}
 {% endblock %}
