@@ -11,3 +11,17 @@
         <input type="submit" value="Bookmark It!">
     </form>
 {% endblock content %}
+
+{% extends 'base.html' %}
+{% block title %}
+    Bookmark An Image
+{% endblock title %}
+{% block content %}
+    <h1>Bookmark an image</h1>
+    <img src="{{ request.GET.url }}" class="image-preview">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="Bookmark It!">
+    </form>
+{% endblock content %}
