@@ -7,7 +7,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger, Page
 
 from .forms import ImageCreateForm
 from .models import Image
-from common.decorators
+from common.decorators import ajax_required
+
 
 # Create your views here.
 @login_required
@@ -44,7 +45,7 @@ def image_detail(request, id, slug):
 
 
 
-#@ajax_required
+@ajax_required
 @login_required
 @require_POST
 def image_like(request):
