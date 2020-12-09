@@ -41,6 +41,9 @@ def image_detail(request, id, slug):
     return render(request,
         'images/image/detail.html',
         {'section': 'images',
+
+
+
         'image': image})
 
 
@@ -68,7 +71,7 @@ def image_like(request):
 @login_required
 def image_list(request):
     images = Image.objects.all()
-    paginator = Paginator(images, 1)
+    paginator = Paginator(images, 8)
     page = request.GET.get('page')
     try:
         images = paginator.page(page)
@@ -83,10 +86,6 @@ def image_list(request):
         # If page is out of range deliver last page of results
         images = paginator.page(paginator.num_pages)
     if request.is_ajax():
-        return render(request,
-                      'images/image/list_ajax.html',
-                      {'section': 'images', 'images': images})
-    return render(request,
-                  'images/image/list.html',
-                   {'section': 'images', 'images': images})
+        return render(request, 'images/image/list_ajax.html', {'section': 'images', 'images': images})
+    return render(request, 'images/image/list.html', {'section': 'images', 'images': images})
 
